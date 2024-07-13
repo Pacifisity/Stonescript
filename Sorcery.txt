@@ -1,0 +1,73 @@
+import UI/MindstoneButton
+
+// This is... for a game... to PLAY the game
+
+var con = import Personal/Factory/Conditionals
+
+?loc = Forest
+  ?foe = boss
+    ?hp = maxhp
+      equipL poison wand *5
+      equipR tower shield
+    :
+      ?foe.distance > 50
+        equipL ouroboros
+        equipR tower shield
+      :
+        equipL poison wand *5
+        equipR poison wand *4
+  :?foe.count = 0
+    equipL ouroboros
+    equipR tower shield
+  :
+    ?foe.distance > 10
+      equipL poison wand *5
+      equipR triskelion
+    :
+      equipL poison wand *5
+      equipR tower shield
+
+?loc = Caves
+  ?foe.count = 0
+    ?hp = maxhp
+      equipL star
+      equipR tower shield
+    :
+      equipL ouroboros
+      equipR tower shield
+  :
+    ?hp <= 5
+      activate potion
+
+    ?armor = 0 | armor = maxarmor
+      equipL crossbow *5
+      equipR crossbow *3
+    :
+      ?armor < maxarmor - 1
+        equipL crossbow *5
+        equipR tower shield
+
+?loc = Rocky | loc = Deadwood
+  ?foe.GetCount(20) = 0
+    ?harvest.distance > 5
+      equipL triskelion
+      equipR star
+    :
+      ?con.characterTargettingTree()
+        equipR hatchet
+        ?item.CanActivate("hatchet")
+          activate R
+      :?con.characterTargettingBoulder()
+        equip shovel
+  :
+    ?foe = boss
+      equipL sword
+      equipR tower shield
+    :
+      ?foe = immune_to_ranged
+        equipL sword
+        equipR tower shield
+      :
+        equipL crossbow
+        equipR tower shield
+        

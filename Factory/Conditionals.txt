@@ -1,0 +1,5 @@
+func characterTargettingTree()
+    return harvest = Tree
+
+func characterTargettingBoulder()
+    return harvest = Boulder
