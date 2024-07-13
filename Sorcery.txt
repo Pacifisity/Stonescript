@@ -1,8 +1,10 @@
 import UI/MindstoneButton
 
-// This is... for a game... to PLAY the game
+// Location automation
+import Personal/Auto/Caves
 
-var con = import Personal/Factory/Conditionals
+// Conditional functions
+var if = import Personal/Factory/Conditionals
 
 ?loc = Forest
   ?foe = boss
@@ -27,41 +29,21 @@ var con = import Personal/Factory/Conditionals
       equipL poison wand *5
       equipR tower shield
 
-?loc = Caves
-  ?foe.count = 0
-    ?hp = maxhp
-      equipL star
-      equipR tower shield
-    :
-      equipL ouroboros
-      equipR tower shield
-  :
-    ?hp <= 5
-      activate potion
-
-    ?armor = 0 | armor = maxarmor
-      equipL crossbow *5
-      equipR crossbow *3
-    :
-      ?armor < maxarmor - 1
-        equipL crossbow *5
-        equipR tower shield
-
 ?loc = Rocky | loc = Deadwood
-  ?foe.GetCount(20) = 0
+  ?if.enemyIsNearby()
     ?harvest.distance > 5
       equipL triskelion
       equipR star
     :
-      ?con.characterTargettingTree()
+      ?if.characterTargettingTree()
         equipR hatchet
         ?item.CanActivate("hatchet")
           activate R
-      :?con.characterTargettingBoulder()
+      :?if.characterTargettingBoulder()
         equip shovel
   :
     ?foe = boss
-      equipL sword
+      equipL poison wand
       equipR tower shield
     :
       ?foe = immune_to_ranged

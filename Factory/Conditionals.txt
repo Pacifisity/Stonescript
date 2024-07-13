@@ -3,3 +3,18 @@ func characterTargettingTree()
 
 func characterTargettingBoulder()
     return harvest = Boulder
+
+func characterIsFullHealth()
+    return hp = maxhp
+
+func characterArmorNearlyFull()
+    return armor > maxarmor - 1
+
+func enemyIsNearby()
+    return foe.GetCount(20) ! 0
+
+func enemyIsBoss()
+    return foe = boss
+
+func enemyIsInDashRange()
+    return foe.distance >= 11 & foe.distance <= 16

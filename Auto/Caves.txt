@@ -1,0 +1,31 @@
+var if = import Personal/Factory/Conditionals
+
+?loc = Caves
+  ?loc.begin | loc.loop
+    equipR tower shield
+    equipL triskelion
+
+  ?hp <= 5
+    activate potion
+
+?if.enemyIsNearby()
+  ?if.enemyIsBoss()
+    equipL poison wand
+    equipR tower shield
+  :
+    ?if.characterArmorNearlyFull()
+      ?if.enemyIsInDashRange()
+        equipL sword
+        equipR dashing shield
+      :
+        equip quarterstaff
+    :
+      equipL poison wand
+      equipR tower shield
+:
+  ?if.characterIsFullHealth()
+    equipL triskelion
+    equipR star
+  :
+    equipL ouroboros
+    equipR tower shield
