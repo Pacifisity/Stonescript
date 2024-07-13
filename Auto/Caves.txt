@@ -8,20 +8,19 @@ var if = import Personal/Factory/Conditionals
   ?hp <= 5
     activate potion
 
-?if.enemyIsNearby()
-  ?if.enemyIsBoss()
+?if.enemyIsBoss()
+  equipL poison wand
+  equipR tower shield
+:?if.enemyIsNearby()
+  ?if.characterArmorNearlyFull()
+    ?if.enemyIsInDashRange()
+      equipL sword
+      equipR dashing shield
+    :
+      equip quarterstaff
+  :
     equipL poison wand
     equipR tower shield
-  :
-    ?if.characterArmorNearlyFull()
-      ?if.enemyIsInDashRange()
-        equipL sword
-        equipR dashing shield
-      :
-        equip quarterstaff
-    :
-      equipL poison wand
-      equipR tower shield
 :
   ?if.characterIsFullHealth()
     equipL triskelion
