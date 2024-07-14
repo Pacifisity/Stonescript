@@ -1,0 +1,13 @@
+var if = import Personal/Factory/Conditionals
+
+?loc = Halls
+	?if.enemyIsBoss()
+		equipL vigor wand *8
+		equipR tower shield
+	:
+		?if.enemyIsNearby(10)
+			equipL vigor wand *8
+			equipR tower shield
+		:
+			equipL triskelion
+			equipR dashing shield

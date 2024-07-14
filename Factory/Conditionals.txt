@@ -10,11 +10,23 @@ func characterIsFullHealth()
 func characterArmorNearlyFull()
     return armor > maxarmor - 1
 
-func enemyIsNearby()
-    return foe.GetCount(20) ! 0
+func characterArmorHalfFull()
+    return armor >= maxarmor / 2
+
+func characterIsEnabled()
+    return ai.enabled
+
+func characterIsIdle()
+    return ai.idle
+
+func enemyIsNearby(int)
+    return foe.GetCount(int) ! 0
 
 func enemyIsBoss()
     return foe = boss
 
 func enemyIsInDashRange()
     return foe.distance >= 11 & foe.distance <= 16
+
+func pickupNearby()
+    return pickup.distance <= 10

@@ -1,0 +1,32 @@
+var if = import Personal/Factory/Conditionals
+
+?loc = Mine
+  ?loc.begin | loc.loop
+    equipL triskelion
+    equipR tower shield
+
+	:?if.enemyIsBoss()
+		equipL aether wand *8
+		equipR aether wand *6
+
+	:
+		?if.enemyIsInDashRange()
+			equipL aether wand *8
+			equipR dashing shield
+
+		:?if.enemyIsNearby(20)
+			equipL aether wand *8
+			equipR tower shield
+
+		:
+			?if.pickupNearby()
+				equipL triskelion
+				equipR star
+
+			:
+				?if.characterIsFullHealth()
+					equipL triskelion
+					equipR dashing shield
+				:
+					equipL triskelion
+					equipR ouroboros

@@ -1,33 +1,11 @@
-import UI/MindstoneButton
-
 // Location automation
 import Personal/Auto/Caves
+import Personal/Auto/Forest
+import Personal/Auto/Halls
+import Personal/Auto/Mine
 
 // Conditional functions
 var if = import Personal/Factory/Conditionals
-
-?loc = Forest
-  ?foe = boss
-    ?hp = maxhp
-      equipL poison wand *5
-      equipR tower shield
-    :
-      ?foe.distance > 50
-        equipL ouroboros
-        equipR tower shield
-      :
-        equipL poison wand *5
-        equipR poison wand *4
-  :?foe.count = 0
-    equipL ouroboros
-    equipR tower shield
-  :
-    ?foe.distance > 10
-      equipL poison wand *5
-      equipR triskelion
-    :
-      equipL poison wand *5
-      equipR tower shield
 
 ?loc = Rocky | loc = Deadwood
   ?if.enemyIsNearby()

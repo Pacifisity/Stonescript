@@ -1,0 +1,18 @@
+var if = import Personal/Factory/Conditionals
+
+?loc = Forest
+	?if.enemyIsBoss()
+		?if.characterArmorNearlyFull()
+			equipL poison wand *8
+			equipR big poison sword
+		:
+			equipL big poison sword
+			equipR tower shield
+
+	:?if.enemyIsNearby(10)
+		equipL big poison sword
+		equipR tower shield
+
+	:
+		equipL triskelion
+		equipR dashing shield
