@@ -3,6 +3,7 @@ import Personal/Auto/Caves
 import Personal/Auto/Forest
 import Personal/Auto/Halls
 import Personal/Auto/Mine
+import Personal/Auto/Ridge
 
 // Conditional functions
 var if = import Personal/Factory/Conditionals

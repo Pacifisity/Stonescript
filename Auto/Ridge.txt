@@ -1,0 +1,21 @@
+var if = import Personal/Factory/Conditionals
+
+?loc = Ridge
+	?if.enemyIsBoss()
+		equipL fire wand *8
+		equipR tower shield
+
+	:?if.enemyEatsKi() & if.enemyIsNearby(20)
+		equipL fire wand *8
+		equipR poison wand *8
+
+	:?if.enemyIsInDashRange() & foe.count < 3
+		equipL fire wand *8
+		equipR dashing shield
+	
+	:?if.enemyIsNearby(10)
+		equipL fire wand *8
+		equipR tower shield
+	:
+		equipL triskelion
+		equipR dashing shield

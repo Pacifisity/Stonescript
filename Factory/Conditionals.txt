@@ -25,6 +25,9 @@ func enemyIsNearby(int)
 func enemyIsBoss()
     return foe = boss
 
+func enemyEatsKi()
+    return foe = ki_eater | foe = ki_globbler | foe = ki_slerper
+
 func enemyIsInDashRange()
     return foe.distance >= 11 & foe.distance <= 16
 
