@@ -1,21 +1,41 @@
 var if = import Personal/Factory/Conditionals
 
 ?loc = Ridge
+	?loc.begin | loc.loop
+    equipL triskelion
+    equipR tower shield
+
 	?if.enemyIsBoss()
-		equipL fire wand *8
-		equipR tower shield
+		?armor >= maxarmor - 3 & if.enemyIsNearby(12)
+			equipL fire wand
+			equipR fire sword
+		:
+			equipL fire wand
+			equipR tower shield
 
-	:?if.enemyEatsKi() & if.enemyIsNearby(20)
-		equipL fire wand *8
-		equipR poison wand *8
+	:?item.GetCooldown("quarterstaff") <= 0
+		equip quarterstaff
+		?item.CanActivate("quarterstaff")
+			activate R
 
-	:?if.enemyIsInDashRange() & foe.count < 3
-		equipL fire wand *8
+	:?foe.count >= 3
+		?if.enemyIsNearby(10)
+			equipL fire wand
+			equipR tower shield
+		:
+			equipL fire wand
+			equipR fire shield
+
+	:?if.enemyIsInDashRange()
+		equipL fire wand
 		equipR dashing shield
-	
+
 	:?if.enemyIsNearby(10)
-		equipL fire wand *8
-		equipR tower shield
+		?armor <= 3
+			equipL fire wand
+			equipR tower shield
+		:?armor >= maxarmor - 3
+			equipL fire wand
+			equipR fire sword
 	:
 		equipL triskelion
-		equipR dashing shield

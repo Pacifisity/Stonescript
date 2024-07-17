@@ -9,18 +9,7 @@ import Personal/Auto/Ridge
 var if = import Personal/Factory/Conditionals
 
 ?loc = Rocky | loc = Deadwood
-  ?if.enemyIsNearby()
-    ?harvest.distance > 5
-      equipL triskelion
-      equipR star
-    :
-      ?if.characterTargettingTree()
-        equipR hatchet
-        ?item.CanActivate("hatchet")
-          activate R
-      :?if.characterTargettingBoulder()
-        equip shovel
-  :
+  ?if.enemyIsNearby(20)
     ?foe = boss
       equipL poison wand
       equipR tower shield
@@ -31,4 +20,14 @@ var if = import Personal/Factory/Conditionals
       :
         equipL crossbow
         equipR tower shield
-        
+  :
+    ?harvest.distance > 5
+      equipL triskelion
+      equipR star
+    :
+      ?if.characterTargettingTree()
+        equipR hatchet
+        ?item.CanActivate("hatchet")
+          activate R
+      :?if.characterTargettingBoulder()
+        equip shovel
