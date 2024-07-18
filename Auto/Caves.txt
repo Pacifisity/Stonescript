@@ -5,6 +5,16 @@ func grind()
   ?if.enemyIsBoss()
     equip heavy crossbow
 
+  :?foe.count > 5 & item.GetCooldown("blade") <= 0
+    equip blade
+    
+    ?item.CanActivate("blade")
+      activate R
+
+  :?if.pickupNearby()
+    equipL triskelion
+    equipR star
+
   :?item.GetCooldown("quarterstaff") <= 0
     equip quarterstaff
 
@@ -34,11 +44,21 @@ func grind()
 func push()
   
   ?if.enemyIsBoss()
-    ?(foe.debuffs.GetCount("debuff_damage") = 1 & foe.debuffs.GetCount("debuff_chill") = 6) | foe.name = "Ceiling Decorator"
+    ?foe.debuffs.GetCount("debuff_damage") = 1 & foe.debuffs.GetCount("debuff_chill") = 6
       equip heavy crossbow
     :
       equipL poison wand dP
       equipR ice wand dI
+  
+  :?item.GetCooldown("quarterstaff") <= 0
+    equip quarterstaff
+    
+    ?item.CanActivate("quarterstaff")
+      activate R
+
+  :?if.enemyIsInDashRange()
+    equipL ice wand dI
+    equipR dashing shield
 
   // if enemies are within blade range, abuse them with bfg
   :?if.enemyIsNearby(10)
@@ -51,22 +71,9 @@ func push()
     equipL triskelion
     equipR star
 
-  // Helps speed up run time if there's nothing to worry about
-  :?if.characterIsFullHealth()
-    // quarterstaff movement abuse
-    ?item.GetCooldown("quarterstaff") <= 0
-      equip quarterstaff
-      
-      ?item.CanActivate("quarterstaff")
-        activate R
-    :
-      // triskelion movement speed boost
-      equipL triskelion
-      equipR ice shield
-
   :
     // last ditch attempt to make up for any lost health
-    equipL ouroboros
+    equipL ice wand dI
     equipR ice shield
 
 ?loc = Caves
